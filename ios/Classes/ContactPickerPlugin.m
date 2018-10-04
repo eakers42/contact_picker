@@ -68,7 +68,13 @@
                         dictionaryWithObjectsAndKeys:[contact.phoneNumbers[0].value stringValue], @"number",
                         [CNLabeledValue localizedStringForLabel:contact.phoneNumbers[0].label],
                         @"label", nil];
-    }
+    } else {
+        //The contact does not have a phonenumber. Return a fake number
+        phoneNumber  = [NSDictionary
+                        dictionaryWithObjectsAndKeys: @"1111111111", @"number",
+                        @"Home",
+                        @"label", nil];
+    } 
     
     _result([NSDictionary
              dictionaryWithObjectsAndKeys:fullNameStr, @"fullName",  phoneNumber, @"phoneNumber", nil]);
